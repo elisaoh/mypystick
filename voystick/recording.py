@@ -19,6 +19,7 @@ class SWHear(object):
         # for tape recording (continuous "tape" of recent audio)
         self.tapeLength=2 #seconds
         self.tape=np.empty(self.rate*self.tapeLength)*np.nan
+        # self.tape = np.empty(5000)*np.nan
 
         self.p=pyaudio.PyAudio() # start the PyAudio class
         if startStreaming:
@@ -30,7 +31,7 @@ class SWHear(object):
 
     def stream_read(self):
         """return values for a single chunk"""
-        data = np.fromstring(self.stream.read(self.chunk),dtype=np.int16)
+        data = np.fromstring(self.stream.read(self.chunk,exception_on_overflow = False),dtype=np.int16)
         #print(data)
         return data
 
