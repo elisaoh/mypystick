@@ -10,7 +10,10 @@ from audiolazy import lpc
 Estimate formants using LPC.
 """
 
-def get_formants(x):
+
+def get_formants(x,Fs):
+
+    formants = numpy.zeros(3)
 
     # Get Hamming window.
     N = len(x)
@@ -21,9 +24,8 @@ def get_formants(x):
     x1 = lfilter([1], [1., 0.63], x1)
 
     # Get LPC.
-
     # Fs = spf.getframerate()
-    Fs = 11025
+    # Fs = 11025
     # ncoeff = int(2 + Fs / 1000)
     # A, e, k = lpc(x1, ncoeff)
     A, k = lpc(x1, order=8)
@@ -39,12 +41,15 @@ def get_formants(x):
 
     # Get frequencies.
     frqs = sorted(angz * (Fs / (2 * math.pi)))
+    frqs.extend([0, 0, 0])
 
-    frqs.extend([0,0,0])
+    # formant range
+    range_min = [100,500,1000]
+    range_max = [1500,3500,4500]
+
+
 
     return frqs
-
-
 
 # formants = get_formants("ae.wav")
 # print(formants)
