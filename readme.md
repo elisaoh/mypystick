@@ -20,7 +20,7 @@ You may want to:
   - Add formant detection 
 
 # Code Details
-### Structures 
+## Structures 
 | Folders | Files | Comments |
 | ------ | ------ | ------ |
 | **debugTools** | | |
@@ -38,7 +38,7 @@ You may want to:
 |**references** | | some might be useful code |
 
 
-### Package Used
+## Package Used
 
 
 | Packages | Comments |
