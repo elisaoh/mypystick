@@ -53,5 +53,3 @@ def get_formants(x,Fs):
 
     return frqs
 
-# formants = get_formants("ae.wav")
-# print(formants)

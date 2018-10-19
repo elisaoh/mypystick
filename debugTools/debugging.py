@@ -7,10 +7,10 @@ from scipy.signal import lfilter,butter
 # from scipy.signal import hamming
 from audiolazy import lpc
 from itertools import islice
-from debuggingPlot import formant_predict as fp
+from debugTools import formant_predict as fp
 import matplotlib
 import matplotlib.pyplot as plt
-from debuggingPlot import current
+from debugTools import current
 import scipy
 
 
