@@ -47,6 +47,7 @@ You may want to:
 | matplotlib | used in plotting |
 | scipy | signal processing |
 | pyaudio | recording |
+| audiolazy | an efficient audio processsing package, more for realtime usage (only used LPC in this case)|
 
 More details in comments.
 
