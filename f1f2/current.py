@@ -4,7 +4,7 @@ class currentState(object):
     """
     record current state for formants smoothing
     """
-    def __init__(self,num=100,fp=[350,1500,2500],rms=400**2):
+    def __init__(self,num=15,fp=[700,1500,2500],rms=400**2):
         self.num = num
         self.f1 = np.zeros(num) # current formants
         self.f2 = np.zeros(num) # current formants
@@ -38,31 +38,25 @@ class currentState(object):
         # works
         M = np.zeros((len(formants),3))
         tran = 1  # weights for transition cost
-        rang = float("inf")  # weights for out of range
+        rang = 10**4  # weights for out of range
         for c in range(len(formants)):
             for f in range(3):
-                M[c,f] = tran*abs(formants[c]-self.fp[f])
+                M[c,f] = tran*(formants[c]-self.fp[f])**2
 
         f_min = [250,500,1000]
         f_max = [1500,3500,4500]
-
         for f in range(3):
             for c in range(len(formants)):
-                if formants[c] <= f_min[f]:
-                    M[c, f] = rang
-                if formants[c] >= f_max[f]:
-                    M[c, f] = rang
-
-        #print(M)
+                M[formants[c] <= f_min[f], f] = rang
+                M[formants[c] >= f_max[f], f] = rang
         return M
-
 
     def formants_pick(self,formants):
         # works
         M = self.formants_cost(formants)
-        thold = 10**7
+        thold = 20000
 
-        Big = float("inf")
+        Big = 10**7
         f_now = np.zeros(3)
 
         # slow?
@@ -91,7 +85,6 @@ class currentState(object):
         else:
             f_now[idx[1]] = self.fp[idx[1]]
         #
-        # print(M)
         return f_now
 
     def formants_smooth(self,formants,rms):
