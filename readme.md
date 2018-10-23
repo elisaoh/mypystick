@@ -14,10 +14,10 @@ VoyStick is a real-time formant tracking program based on python. The project is
 
 
 You may want to:
-  - Tune parameters
-  - Add calibration
-  - Change GUI
-  - Add formant detection 
+  - Tune parameters (window size, LPC order,bandwidth, weights,...)
+  - Add calibration (fundemental frequency, initial formants, ...)
+  - Change GUI (stop the curser when there is not a vowel,..)
+  - Improve algorithm (voting, ...)
 
 # Code Details
 ## Structures 
