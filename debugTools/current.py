@@ -1,3 +1,4 @@
+
 import numpy as np
 
 class currentState(object):
@@ -58,7 +59,7 @@ class currentState(object):
 
 
     def formants_pick(self,formants):
-        # works
+        # this works
         M = self.formants_cost(formants)
         thold = 10**7
 
@@ -90,16 +91,18 @@ class currentState(object):
             f_now[idx[1]] = formants[idx[0]]
         else:
             f_now[idx[1]] = self.fp[idx[1]]
-        #
-        # print(M)
+
         return f_now
 
     def formants_smooth(self,formants,rms):
+        # smoothing formants using a weighted window
+
         fn = self.formants_pick(formants)
         self.formants_add(fn, rms)
         fs = np.zeros(3)
 
-        weights = np.ones(self.num) # some weights for rms, 3 as num = 3 for now
+        weights = np.ones(self.num) # some weights for rms, averaging for now;
+        # potentially exponential
         wr = np.multiply(weights,self.rms) # weighted rms
         rms_sum = np.sum(wr)
 

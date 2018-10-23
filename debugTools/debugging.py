@@ -33,10 +33,10 @@ def window(seq, n=2):
         result = result[1:] + (elem,)
         yield list(result)
 #
-# sig = "UCLA"
-# folder_path = "/Users/elisa/Documents/2018Summer/VoiStick/mypystick/VChart/"
-# vowel_path = "a_Front"
-# file_path = folder_path+vowel_path+".wav"
+sig = "UCLA"
+folder_path = "/Users/elisa/Documents/2018Summer/VoiStick/mypystick/VChart/"
+vowel_path = "a_Front"
+file_path = folder_path+vowel_path+".wav"
 
 # testing
 sig = "my_a"

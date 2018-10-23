@@ -28,7 +28,7 @@ def get_formants(x,Fs):
     # Fs = 11025
     # ncoeff = int(2 + Fs / 1000)
     # A, e, k = lpc(x1, ncoeff)
-    A, k = lpc(x1, order=12)
+    A, k = lpc(x1, order=8)
 
     list1 = [float(v) for k, v in A.items()]
 
